@@ -1,0 +1,136 @@
+%center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%imgAfter {
+  content: "";
+  background-image: url('../assets/galochka.png');
+  background-size:  60px 60px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  z-index: 10;
+}
+
+body{
+  background-color: rgb(206, 206, 206);
+}
+#one{
+    position: absolute;
+    top: 0;
+    border-right: 500px solid transparent;
+    border-left: 500px solid transparent;
+    border-top: 300px solid #fff;
+    z-index: 3;
+    @extend %center;
+}
+#one #section{
+  z-index: 4;
+  bottom: 100px;
+}
+#section{
+  position: absolute;
+  text-align: center;
+  width: 280px;
+}
+#two{
+  position: absolute;
+  bottom: 255px;
+  left: 0;
+  border-right: 300px solid transparent;
+  border-top: 300px solid transparent;
+  border-left: 500px solid #fff;
+  @extend %center;
+}
+#two #section{
+  z-index: 4;
+  right: 210px;
+  bottom: 20px;
+}
+#three{
+  position: absolute;
+  bottom: 255px;
+  right: 0;
+  border-left: 300px solid transparent;
+  border-top: 300px solid transparent;
+  border-right: 500px solid #fff;
+}
+#three #section{
+  z-index: 4;
+  bottom: 20px;
+  left: 210px;
+}
+#four{
+  position: absolute;
+  @extend %center;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
+  width: 499px;
+  height: 251px;
+  background-color: #fff;
+}
+#convert{
+  position: relative;
+  @extend %center;
+  min-width: 1005px;
+  min-height: 562px;
+  max-width: 1005px;
+  max-height: 562px;
+  margin: 20px;
+  border: 1px dotted #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: .4s;
+  box-shadow: -15px 15px 20px rgba(0, 0, 0, 0.5);
+}
+#five{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  @extend %center;
+  width: 499px;
+  height: 251px;
+  background-color: #fff;
+}
+#section{
+  font-style: italic;
+}
+@keyframes rotateConvert {
+  0% {
+    transform: rotate3d(100, 90, -50, 20deg);
+  }
+  50%{
+    transform: rotate3d(300, 180, -100, 40deg);
+  }
+  100%{
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+}
+#four #section, #five #section{
+  width: 420px;
+}
+#one.show::after {
+  @extend %imgAfter;
+  bottom: 90px;    
+}
+#two.show::after {
+  @extend %imgAfter;
+  right: 310px;
+  bottom: 10px;   
+}
+#three.show::after {
+  @extend %imgAfter;
+  left: 310px;
+  bottom: 10px;   
+}
+#four.show::after {
+  @extend %imgAfter;
+  bottom: 50px;
+}
+#five.show::after {
+  @extend %imgAfter;
+  bottom: 50px;
+}
