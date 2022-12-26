@@ -9,12 +9,11 @@ const data = require('../data')
 export const DocumentView = observer(() => {
   const { pdfDataStore } = useContext(Context)
   const [source, setSource] = useState()
-  const [load, setLoad] = useState(true)
+  const [load, setLoad] = useState(false)
 
   useEffect(() => {
     (async function () {
       const pdfDoc = await PDFDocument.create()
-
       const url2 = 'https://db.onlinewebfonts.com/t/643e59524d730ce6c6f2384eebf945f8.ttf'
       const fontBytes = await fetch(url2).then(res => res.arrayBuffer()).finally(() => setLoad(true))
       const page = pdfDoc.addPage()
@@ -50,7 +49,7 @@ export const DocumentView = observer(() => {
             result += '\n'
             count++
             if (count > 30) {
-              moveTextToNextPage(text.slice(i), count)
+              moveTextToNextPage(text.slice(i))
               return result
             }
           }
@@ -58,7 +57,7 @@ export const DocumentView = observer(() => {
             k = 0
             count++
             if (count > 30) {
-              moveTextToNextPage(text.slice(i), count)
+              moveTextToNextPage(text.slice(i))
               return result
             }
           }
@@ -68,18 +67,10 @@ export const DocumentView = observer(() => {
         return result
       }
 
-      const imageBytes = pdfDataStore.imgBytes
-      if (imageBytes !== null) {
-        var image = await pdfDoc.embedJpg(imageBytes)
-        var dims = image.scaleToFit(400, 400)
-      }
+      const imagesBytes = pdfDataStore.imgBytes
 
-      let posWithText = false
-
-      async function moveTextToNextPage(text, count) {
+      async function moveTextToNextPage(text) {
         const nextPage = pdfDoc.addPage()
-
-        count <= 15 ? posWithText = true : posWithText = false
 
         nextPage.moveTo(35, 800)
         nextPage.drawText(wrapText(text, 14), { font: customFont, size: 14 })
@@ -87,25 +78,26 @@ export const DocumentView = observer(() => {
 
       page.drawText(wrapText(subItems, 14), { font: customFont, size: 14 })
 
-      if (!posWithText) {
-        const lastPage = pdfDoc.addPage()
+      const lastPage = pdfDoc.addPage()
+      let coordX = 20, coordY = 600
+
+      for (let i = 0; i < imagesBytes.length; i++) {
+        const image = await pdfDoc.embedJpg(imagesBytes[i])
+        const dims = image.scaleToFit(200, 200)
+
+        if (i !== 0) i % 2 === 0 ? coordX += 210 : coordY -= 210
+
         lastPage.drawImage(image, {
           width: dims.width,
           height: dims.height,
-          x: 35,
-          y: 400
-        })
-      } else {
-        pdfDoc.getPages()[pdfDoc.getPages().length - 1].drawImage(image, {
-          width: dims.width,
-          height: dims.height,
-          x: 35,
-          y: 50
+          x: coordX,
+          y: coordY
         })
       }
 
       const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true })
       setSource(pdfDataUri)
+      pdfDataStore.clearImgBytes()
     })()
   }, [])
 
@@ -115,8 +107,8 @@ export const DocumentView = observer(() => {
         title="pdf"
         id="pdf"
         src={source}
-        style={{ width: '100%', height: '100%' }}></iframe>
-      : <Spinner
+        style={{ width: '100%', height: '100%' }
+        } /> : <Spinner
         className="position-absolute start-50 top-50"
         animation="border"
         role="status" />}
