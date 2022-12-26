@@ -4,7 +4,7 @@ export default class PDFDataStore {
   constructor() {
     this._data = new Map()
     this._show = false
-    this._imgBytes = null
+    this._imgBytes = []
     makeAutoObservable(this)
   }
   setData(key, value) {
@@ -13,8 +13,11 @@ export default class PDFDataStore {
   setShow(bool) {
     this._show = bool
   }
-  setImgBytes(arrayBuf) {
-    this._imgBytes = arrayBuf
+  setImgBytes(buff) {
+    this._imgBytes.push(buff)
+  }
+  clearImgBytes() {
+    this._imgBytes.clear()
   }
   get data() {
     return this._data.entries()
