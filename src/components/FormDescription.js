@@ -9,7 +9,7 @@ const FormDescription = observer(({ num, convertRef, items, setShow }) => {
   const formRef = useRef()
   const fileRef = useRef()
 
-  const saveData = (target) => {
+  const saveData = () => {
     let groups = formRef.current.children
     convertRef.current.style.animation = 'none'
 
@@ -34,22 +34,29 @@ const FormDescription = observer(({ num, convertRef, items, setShow }) => {
     convertRef.current.style.animation = 'rotateConvert 1.5s'
   }
 
-  const handleFile = (e) => {
-    pdfDataStore.setImgBytes(e.target.result)
-  }
+  const handleFile = (e) => pdfDataStore.setImgBytes(e.target.result)
 
-  const handleChangeFile = (file) => {
-    let fileData = new FileReader();
-    fileData.onloadend = handleFile;
-    fileData.readAsArrayBuffer(file);
+  const handleChangeFile = (files) => {
+    if (files.length > 3) {
+      alert('Можно загрузить не более 3-х картинок!')
+      fileRef.current.value = ''
+      return
+    }
+    for (let i = 0; i < files.length; i++) {
+      let fileData = new FileReader()
+
+      fileData.onloadend = handleFile
+      fileData.readAsArrayBuffer(files[i])
+    }
   }
 
   return <Form ref={formRef} className="d-flex flex-column">
     {num === 5 ? <Form.Group>
       <Form.Label>Загрузи картинку</Form.Label>
       <Form.Control
+        multiple
         type="file"
-        onChange={(e) => handleChangeFile(e.target.files[0])}
+        onChange={(e) => handleChangeFile(e.target.files)}
         ref={fileRef} />
     </Form.Group> : false}
     {items ? items.split(',').map(item =>
