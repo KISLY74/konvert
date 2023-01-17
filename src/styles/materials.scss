@@ -1,0 +1,24 @@
+.section-materials{
+  padding: 20px;
+  background-color: #f3f4f6;
+  h2{
+    font-family: CMU;
+  }
+  .materials{
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 20px;
+    &__file{
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      text-decoration: none;
+      color: #000;
+      display: flex;
+      img{
+        height: 44px;
+      }
+    }
+  }
+}
