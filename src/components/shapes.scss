@@ -15,6 +15,7 @@
 
 body{
   background-color: rgb(206, 206, 206);
+  // background-color: ;
 }
 #one{
     position: absolute;
@@ -133,4 +134,11 @@ body{
 #five.show::after {
   @extend %imgAfter;
   bottom: 50px;
+}
+.section-convert{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 40px;
 }
