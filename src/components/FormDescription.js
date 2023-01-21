@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite"
 import { useContext, useRef, useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import { Context } from "../index"
+import { useEffect } from "react"
 
 const FormDescription = observer(({ num, convertRef, items, setShow }) => {
   const { pdfDataStore } = useContext(Context)
@@ -42,6 +43,15 @@ const FormDescription = observer(({ num, convertRef, items, setShow }) => {
       fileRef.current.value = ''
       return
     }
+
+    let filesArr = Array.from(files)
+
+    if (filesArr.some(file => file.type !== 'image/png' && file.type !== 'image/jpeg')) {
+      alert('Изображения только в формате .JPG, .PNG')
+      fileRef.current.value = ''
+      return
+    }
+
     for (let i = 0; i < files.length; i++) {
       let fileData = new FileReader()
 
@@ -50,9 +60,13 @@ const FormDescription = observer(({ num, convertRef, items, setShow }) => {
     }
   }
 
+  useEffect(() => {
+    pdfDataStore.clearImgBytes()
+  }, [pdfDataStore])
+
   return <Form ref={formRef} className="d-flex flex-column">
     {num === 5 ? <Form.Group>
-      <Form.Label>Загрузи картинку</Form.Label>
+      <Form.Label>Загрузи картинку (только формат .jpg или .png)</Form.Label>
       <Form.Control
         multiple
         type="file"
