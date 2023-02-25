@@ -80,3 +80,20 @@
       }
     }
 }
+@media (max-width: 500px){
+  .section{
+    padding: 10px;
+    &__background{
+      width: 300px;
+    }
+    .title{
+   width: 300px;
+      p{
+    font-size: 14px;
+   }
+      h1{
+        font-size: 18px !important;
+      }
+    }
+  }
+}
