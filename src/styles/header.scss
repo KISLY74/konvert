@@ -38,3 +38,12 @@
     }
   }
 }
+@media(max-width: 500px){
+  .header{
+    justify-content: center;
+    .nav{
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
