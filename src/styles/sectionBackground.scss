@@ -61,3 +61,22 @@
       font-size: 28px !important;
     }
 }
+@media (max-width: 768px){
+    .section{
+      flex-direction: column;
+      gap: 10px;
+      &__background{
+        width: 350px;
+        align-self: center;
+      }
+      .title{
+        width: 400px;
+     p{
+      font-size: 14px;
+     }
+        h1{
+          font-size: 24px !important;
+        }
+      }
+    }
+}

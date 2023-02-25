@@ -175,3 +175,63 @@ body{
     left: 110px;
   }
 }
+@media(max-width: 768px){
+  #one{
+    border-right: 270px solid transparent;
+    border-left: 270px solid transparent;
+    border-top: 210px solid #fff;
+    #section{
+      width: 250px;
+      bottom: 70px;
+    }
+  }
+  #two{
+    border-left: 270px solid #fff;
+    border-top: 210px solid transparent;
+    bottom: 130px;
+    #section{
+      right: 115px !important;
+      bottom: 7px;
+    }
+  }
+  #section{
+    width: 150px;
+    p{
+      margin-bottom: 5px;
+    }
+  }
+  #three{
+    border-right: 270px solid #fff;
+    border-top: 210px solid transparent;
+    bottom: 130px;
+    #section{
+      left: 115px !important;
+      bottom: 7px;
+    }
+  }
+  #four #section, 
+  #five #section{
+    width: 220px;
+  }
+  #five, 
+  #four{
+    width: 269px;
+    height: 126px;
+  }
+  #convert{
+    min-width: 545px;
+    max-width: 545px;
+    min-height: 345px;
+    max-height: 345px;
+    font-size: 12px;
+  }
+  #two #section{
+    right: 40px;
+  }
+  #three #section{
+    left: 40px;
+  }
+  .btn{
+    font-size: 12px;
+  }
+}
