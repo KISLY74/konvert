@@ -38,7 +38,7 @@ body{
   position: absolute;
   bottom: 255px;
   left: 0;
-  border-right: 300px solid transparent;
+  border-right: 100px solid transparent;
   border-top: 300px solid transparent;
   border-left: 500px solid #fff;
   @extend %center;
@@ -52,7 +52,7 @@ body{
   position: absolute;
   bottom: 255px;
   right: 0;
-  border-left: 300px solid transparent;
+  border-left: 100px solid transparent;
   border-top: 300px solid transparent;
   border-right: 500px solid #fff;
 }
@@ -233,5 +233,66 @@ body{
   }
   .btn{
     font-size: 12px;
+  }
+}
+@media(max-width: 600px){
+  #one{
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+    #section{
+      width: 180px;
+      bottom: 80px;
+    }
+  }
+  #two{
+    border-left: 150px solid #fff;
+    #section{
+      right: 20px !important;
+      bottom: 17px;
+    }
+  }
+  #three{
+    border-right: 150px solid #fff;
+    #section{
+      left: 20px !important;
+      bottom: 17px;
+    }
+  }
+  #four #section, 
+  #five #section{
+    width: 170px;
+  }
+  #five, 
+  #four{
+    width: 150px;
+    height: 127px;
+  }
+  #convert{
+    min-width: 305px;
+    max-width: 305px;
+    font-size: 16px;
+  }
+  #section-description__disabled{
+    display: none;
+  }
+}
+@media (max-width: 500px){
+  #section{
+    width: 100px !important;
+  }
+  #one{
+    #section{
+      width: 150px !important;
+    }
+  }
+  #two{
+    #section{
+      right: 45px !important;
+    }
+  }
+  #three{
+    #section{
+      left: 45px !important;
+    }
   }
 }
