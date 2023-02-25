@@ -8,7 +8,7 @@ const InitSection = ({ convertRef, name, description, num }) => {
   return <div id="section">
     <p>{num}.
       <b> {name}</b>
-      ({description})
+      <span id="section-description__disabled">({description})</span>
     </p>
     <Button className="btn" onClick={() => setShow(true)}>Написать</Button>
     <ModalWindow
