@@ -15,7 +15,6 @@
 
 body{
   background-color: rgb(206, 206, 206);
-  // background-color: ;
 }
 #one{
     position: absolute;
@@ -141,4 +140,38 @@ body{
   align-items: center;
   flex-direction: column;
   margin-bottom: 40px;
+}
+@media(max-width: 1050px){
+  #one{
+    border-right: 300px solid transparent;
+    border-left: 300px solid transparent;
+  }
+  #two{
+    border-left: 300px solid #fff;
+  }
+  #section{
+    width: 200px;
+  }
+  #three{
+    border-right: 300px solid #fff;
+  }
+  #four #section, 
+  #five #section{
+    width: 220px;
+  }
+  #five, 
+  #four{
+    width: 299px;
+  }
+  #convert{
+    min-width: 605px;
+    max-width: 605px;
+    font-size: 12px;
+  }
+  #two #section{
+    right: 110px;
+  }
+  #three #section{
+    left: 110px;
+  }
 }
