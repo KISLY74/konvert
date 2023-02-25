@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import background from "../assets/background.jpg"
+import { backgrounds } from "../assets/backgrounds"
 import { observer } from "mobx-react-lite";
 import { Context } from "..";
 import data from "../data";
@@ -56,7 +56,7 @@ const PdfPreview = observer(() => {
       background(currentPage, pageSize) {
         return [
           {
-            image: background,
+            image: backgrounds.pageBackground,
             width: pageSize.width,
             height: pageSize.height,
             opacity: 0.3
