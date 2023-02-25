@@ -48,3 +48,16 @@
     }
   }
 }
+@media (max-width: 1050px){
+    .section{
+      flex-direction: column;
+      gap: 20px;
+      &__background{
+        width: 500px;
+        align-self: center;
+      }
+    }
+    h1{
+      font-size: 28px !important;
+    }
+}
