@@ -5,7 +5,7 @@
 }
 %imgAfter {
   content: "";
-  background-image: url('../assets/galochka.png');
+  background: url('../assets/galochka.png') no-repeat center;
   background-size:  60px 60px;
   width: 60px;
   height: 60px;
@@ -149,6 +149,20 @@ body{
   #two{
     border-left: 300px solid #fff;
   }
+  #two.show::after{
+    right: 150px;
+    background-size: 50px 50px;
+  }
+  #three.show::after{
+    left: 150px;
+  }
+  #one.show::after, 
+  #two.show::after, 
+  #three.show::after,
+  #four.show::after,
+  #five.show::after{
+    background-size: 50px 50px;
+  }
   #section{
     width: 200px;
   }
@@ -193,6 +207,27 @@ body{
       right: 115px !important;
       bottom: 7px;
     }
+  }
+   #one.show::after{
+     bottom: 35px;
+   }
+   #two.show::after{
+    bottom: -7px;
+    background-size: 50px 50px;
+  }
+  #three.show::after{
+    bottom: -7px;
+  }
+  #one.show::after, 
+  #two.show::after, 
+  #three.show::after,
+  #four.show::after,
+  #five.show::after{
+    background-size: 40px 40px;
+  }
+  #four.show::after,
+  #five.show::after{
+    bottom: -5px;
   }
   #section{
     width: 150px;
@@ -250,6 +285,17 @@ body{
       right: 20px !important;
       bottom: 17px;
     }
+  }
+  #one.show::after{
+    bottom: 50px;
+  }
+  #two.show::after{
+    bottom: 0;
+    right: 60px;
+  }
+  #three.show::after{
+    bottom: 0;
+    left: 60px;
   }
   #three{
     border-right: 150px solid #fff;
